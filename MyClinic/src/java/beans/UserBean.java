@@ -43,17 +43,17 @@ public class UserBean implements Serializable {
         if ("jan".equals(login)) {
             role = UserRole.PATIENT;
             logged = true;
-            return null;
+            return "/index";
         }
         if ("adam".equals(login)) {
             role = UserRole.DOCTOR;
             logged = true;
-            return null;
+            return "/index";
         }
         if ("ala".equals(login)) {
             role = UserRole.RECEPTIONIST;
             logged = true;
-            return null;
+            return "/reception/index";
         }
         return null;
     }
@@ -71,7 +71,7 @@ public class UserBean implements Serializable {
                 invalidateSession();
         logged = false;
         role = null;
-        return null;
+        return "/index";
     }
 
     /**
