@@ -9,9 +9,9 @@
     <h:body>
         <ui:composition>
             <h:link value="#{msg.clinic}" outcome="/index" />
-
+            &nbsp;
                 <h:form rendered="#{userBean.logged}">
-                    #{msg.welcome} #{userBean.login}. #{msg.you_are_logged_as} #{userBean.role}.
+                    #{msg.welcome} #{userBean.login}. #{msg.you_are_logged_as} #{userBean.role}. &nbsp;
                     <h:commandButton value="#{msg.logout}" action="#{userBean.logout()}" />
                 </h:form>
                 

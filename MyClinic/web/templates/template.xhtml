@@ -36,7 +36,12 @@
             </div>
         </div>
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            <ui:insert name="bottom">
+                <h:form>
+                    <h:commandLink value="#{msg.polish}" action="#{userBean.polish()}" /> &nbsp; 
+                    <h:commandLink value="#{msg.english}" action="#{userBean.english()}" />
+                </h:form>
+            </ui:insert>
         </div>
 
     </h:body>

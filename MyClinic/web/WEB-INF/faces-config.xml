@@ -8,5 +8,9 @@
             <base-name>messages.messages</base-name>
             <var>msg</var>
         </resource-bundle>
+        <locale-config>
+            <default-locale>pl</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
     </application>
 </faces-config>
