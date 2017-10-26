@@ -8,14 +8,14 @@
     </h:head>
     <h:body>
         <ui:composition>
-            <h:link value="Wirtualna przychodnia" outcome="/index" />
+            <h:link value="#{msg.clinic}" outcome="/index" />
 
                 <h:form rendered="#{userBean.logged}">
-                    Witaj #{userBean.login}. Jesteś zalogowany jako #{userBean.role}.
-                    <h:commandButton value="Wyloguj" action="#{userBean.logout()}" />
+                    #{msg.welcome} #{userBean.login}. #{msg.you_are_logged_as} #{userBean.role}.
+                    <h:commandButton value="#{msg.logout}" action="#{userBean.logout()}" />
                 </h:form>
                 
-                <h:link rendered="#{not userBean.logged}" value="Zaloguj się" outcome="/public/login" />
+            <h:link rendered="#{not userBean.logged}" value="#{msg.sign_in}" outcome="/public/login" />
             
         </ui:composition>
     </h:body>

@@ -9,15 +9,15 @@
         <ui:composition template="./../templates/template.xhtml">
 
             <ui:define name="content">
-                <h3>Logowanie</h3>
+                <h3>#{msg.login2}</h3>
                 <h:form rendered="#{not userBean.logged}">
                     <h:panelGrid columns="2">
-                        <h:outputText value="Login: " />
+                        <h:outputText value="#{msg.login}" />
                         <h:inputText value="#{userBean.login}" />
-                        <h:outputText value="Password: " />
+                        <h:outputText value="#{msg.password}" />
                         <h:inputSecret value="#{userBean.password}" />
                     </h:panelGrid>
-                    <h:commandButton value="OK" action="#{userBean.logIn()}" />
+                    <h:commandButton value="#{msg.ok}" action="#{userBean.logIn()}" />
                 </h:form>
             </ui:define>
 
