@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -14,7 +15,16 @@
                 <h3>Nowy lekarz</h3>
                 <h:form>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="Imię: " />
+                        <h:outputLabel value="#{msg.name} " />
+                        <h:inputText value="#{addDoctorBean.name}" />
+                        
+                        <h:outputLabel value="#{msg.lastname} " />
+                        <h:inputText value="#{addDoctorBean.lastname}" />
+                        
+                        <h:outputLabel value="#{msg.specialization} " />
+                        <h:selectOneMenu value="#{addDoctorBean.specialization}" >
+                            <f:selectItems value="#{addDoctorBean.specializations}" />
+                        </h:selectOneMenu>
                         
                     </h:panelGrid>
                 </h:form>
