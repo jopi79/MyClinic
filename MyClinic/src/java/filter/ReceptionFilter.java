@@ -27,6 +27,8 @@ import model.UserRole;
  * @author Student
  */
 public class ReceptionFilter implements Filter {
+    @Inject
+    UserBean userBean;
     
     @Inject
     UserBean userBean;

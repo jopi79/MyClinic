@@ -8,6 +8,7 @@ package beans;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Locale;
 import javax.faces.context.FacesContext;
 import model.UserRole;
 
@@ -72,6 +73,18 @@ public class UserBean implements Serializable {
         logged = false;
         role = null;
         return "/index";
+    }
+
+    public String english() {
+        FacesContext c = FacesContext.getCurrentInstance();
+        c.getViewRoot().setLocale(Locale.ENGLISH);
+        return null;
+    }
+
+    public String polish() {
+        FacesContext c = FacesContext.getCurrentInstance();
+        c.getViewRoot().setLocale(new Locale("pl"));
+        return null;
     }
 
     /**
