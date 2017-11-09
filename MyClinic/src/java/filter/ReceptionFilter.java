@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -27,6 +28,9 @@ import model.UserRole;
  */
 public class ReceptionFilter implements Filter {
     
+    @Inject
+    UserBean userBean;
+    
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
@@ -43,21 +47,21 @@ public class ReceptionFilter implements Filter {
             log("ReceptionFilter:DoBeforeProcessing");
         }
         
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        
-        HttpSession session = req.getSession();
-        UserBean userBean = (UserBean) session.getAttribute("userBean");
-        UserRole role = userBean==null ? null : userBean.getRole();
-        if(role!=null && role==UserRole.RECEPTIONIST)
-        {
-            //chain.doFilter(request, response);
-        }
-        else
-        {
-            session.setAttribute("reqURL", req.getRequestURI());
-            res.sendRedirect(req.getContextPath()+"/faces/index.xhtml");
-        }
+//        HttpServletRequest req = (HttpServletRequest) request;
+//        HttpServletResponse res = (HttpServletResponse) response;
+//        
+//        HttpSession session = req.getSession();
+//        UserBean userBean = (UserBean) session.getAttribute("userBean");
+//        UserRole role = userBean==null ? null : userBean.getRole();
+//        if(role!=null && role==UserRole.RECEPTIONIST)
+//        {
+//            //chain.doFilter(request, response);
+//        }
+//        else
+//        {
+//            session.setAttribute("reqURL", req.getRequestURI());
+//            res.sendRedirect(req.getContextPath()+"/faces/index.xhtml");
+//        }
         
     }    
     
@@ -104,7 +108,21 @@ public class ReceptionFilter implements Filter {
         }
         
         doBeforeProcessing(request, response);
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
         
+        HttpSession session = req.getSession();
+        UserRole role = userBean==null ? null : userBean.getRole();
+        if(role!=null && role==UserRole.RECEPTIONIST)
+        {
+            //chain.doFilter(request, response);
+        }
+        else
+        {
+            session.setAttribute("reqURL", req.getRequestURI());
+            res.sendRedirect(req.getContextPath()+"/faces/index.xhtml");
+            return;
+        }
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
