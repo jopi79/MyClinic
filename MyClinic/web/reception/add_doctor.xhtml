@@ -14,21 +14,44 @@
 
                 <h3>Nowy lekarz</h3>
                 <h:form>
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="3">
                         <h:outputLabel value="#{msg.name} " />
-                        <h:inputText value="#{addDoctorBean.name}" />
-                        
+                        <h:inputText value="#{addDoctorBean.name}" id="name" />
+                        <h:message for="name" />
+
                         <h:outputLabel value="#{msg.lastname} " />
-                        <h:inputText value="#{addDoctorBean.lastname}" />
-                        
+                        <h:inputText value="#{addDoctorBean.lastname}" id="lastname"/>
+                        <h:message for="lastname" />
+
                         <h:outputLabel value="#{msg.specialization} " />
-                        <h:selectOneMenu value="#{addDoctorBean.specialization}" >
+                        <h:selectOneMenu value="#{addDoctorBean.specialization}"
+                                         id="specialization" >
                             <f:selectItems value="#{addDoctorBean.specializations}" />
                         </h:selectOneMenu>
-                        
+                        <h:message for="specialization" />
+
+                        <h:outputLabel value="#{msg.age} " />
+                        <h:inputText value="#{addDoctorBean.age}" id="age" />
+                        <h:message for="age" />
+
+                        <h:outputLabel value="#{msg.price} " />
+                        <h:inputText value="#{addDoctorBean.price}" id="price" >
+                            <f:convertNumber minFractionDigits="0" 
+                                             maxFractionDigits="2"/>
+                        </h:inputText>
+                        <h:message for="price" />
+
+                        <h:outputLabel value="#{msg.date} " />
+                        <h:inputText value="#{addDoctorBean.date}" id="date" >
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                        <h:message for="date" />
                     </h:panelGrid>
+
+                    <h:commandButton value="#{msg.add}" 
+                                     action="#{addDoctorBean.add()}" />
                 </h:form>
-                
+
             </ui:define>
 
         </ui:composition>

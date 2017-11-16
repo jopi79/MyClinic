@@ -66,4 +66,8 @@ public class DoctorBean {
          doctors.add(new Doctor(Specialization.laryngologist,"Damian","Dunik",4));
          doctors.add(new Doctor(Specialization.pediatrician,"Ernest","Edamski",5));
     }
+
+    public void add(Doctor d) {
+        doctors.add(d);
+    }
 }

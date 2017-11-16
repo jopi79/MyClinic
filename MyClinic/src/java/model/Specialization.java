@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ResourceBundle;
+
 /**
  *
  * @author Student
@@ -12,5 +14,21 @@ package model;
 public enum Specialization {
     laryngologist,
     ophthalmologist,
-    pediatrician
+    pediatrician;
+
+    private final static ResourceBundle rb
+            = ResourceBundle.getBundle("messages.specializations");
+
+    public String toString() {
+        switch (this) {
+            case pediatrician:
+                return rb.getString("pediatrician");
+            case laryngologist:
+                return rb.getString("laryngologist");
+            case ophthalmologist:
+                return rb.getString("ophthalmologist");
+            default:
+                return "";
+        }
+    }
 }
