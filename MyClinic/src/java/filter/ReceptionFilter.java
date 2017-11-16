@@ -30,9 +30,9 @@ public class ReceptionFilter implements Filter {
     
     private static final boolean debug = true;
 
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
+    @Inject
+    UserBean userBean;
+    
     private FilterConfig filterConfig = null;
     
     public ReceptionFilter() {
