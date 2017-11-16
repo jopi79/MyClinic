@@ -28,9 +28,6 @@ import model.UserRole;
  */
 public class ReceptionFilter implements Filter {
     
-    @Inject
-    UserBean userBean;
-    
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
