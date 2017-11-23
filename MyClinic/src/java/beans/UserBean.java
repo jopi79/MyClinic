@@ -9,7 +9,9 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Locale;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.validation.constraints.Size;
 import model.UserRole;
 
 /**
@@ -20,7 +22,10 @@ import model.UserRole;
 @SessionScoped
 public class UserBean implements Serializable {
 
-    private String login, password;
+    @Size(min=1,message = "{login_not_empty}")
+    private String login;
+    @Size(min=1,message = "{password_not_empty}")
+    private String password;
     private UserRole role;
     private boolean logged = false;
 
@@ -56,6 +61,11 @@ public class UserBean implements Serializable {
             logged = true;
             return "/reception/index";
         }
+        logged = false;
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message = new FacesMessage("Logowanie nie powiodło się");
+        message.setSeverity(FacesMessage.SEVERITY_ERROR);
+        context.addMessage(null, message);
         return null;
     }
 

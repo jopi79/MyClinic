@@ -15,10 +15,10 @@
         <ui:composition template="/templates/receptionTemplate.xhtml">
 
             <ui:define name="content">
-
+                
                 <h3>#{doctorBean.doctor.name} #{doctorBean.doctor.lastname}</h3>
                 
-                #{msg.specialization}: #{doctorBean.doctor.specialization}
+                #{msg.specialization}: #{doctorBean.doctor.specialization.toString()}
                 
             </ui:define>
 

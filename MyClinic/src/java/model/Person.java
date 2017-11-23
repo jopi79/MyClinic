@@ -10,6 +10,7 @@ package model;
  * @author Student
  */
 public class Person {
+    private static int count = 0;
     private int id;
     private String name, lastname;
     private String login, password;
@@ -17,12 +18,7 @@ public class Person {
     public Person(String name, String lastname) {
         this.name = name;
         this.lastname = lastname;
-    }
-
-    public Person(int id, String name, String lastname) {
-        this.id = id;
-        this.name = name;
-        this.lastname = lastname;
+        this.id = ++count;
     }
 
     public String getName() {

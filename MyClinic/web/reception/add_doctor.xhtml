@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -15,40 +16,41 @@
                 <h3>Nowy lekarz</h3>
                 <h:form>
                     <h:panelGrid columns="3">
-                        <h:outputLabel value="#{msg.name} " />
-                        <h:inputText value="#{addDoctorBean.name}" id="name" />
-                        <h:message for="name" />
+                        <p:outputLabel value="#{msg.name} " />
+                        <p:inputText value="#{addDoctorBean.name}" id="name" />
+                        <p:message for="name" />
 
-                        <h:outputLabel value="#{msg.lastname} " />
-                        <h:inputText value="#{addDoctorBean.lastname}" id="lastname"/>
-                        <h:message for="lastname" />
+                        <p:outputLabel value="#{msg.lastname} " />
+                        <p:inputText value="#{addDoctorBean.lastname}" id="lastname"/>
+                        <p:message for="lastname" />
 
-                        <h:outputLabel value="#{msg.specialization} " />
-                        <h:selectOneMenu value="#{addDoctorBean.specialization}"
+                        <p:outputLabel value="#{msg.specialization} " />
+                        <p:selectOneMenu value="#{addDoctorBean.specialization}"
                                          id="specialization" >
                             <f:selectItems value="#{addDoctorBean.specializations}" />
-                        </h:selectOneMenu>
-                        <h:message for="specialization" />
+                        </p:selectOneMenu>
+                        <p:message for="specialization" />
 
-                        <h:outputLabel value="#{msg.age} " />
-                        <h:inputText value="#{addDoctorBean.age}" id="age" />
-                        <h:message for="age" />
+                        <p:outputLabel value="#{msg.age} " />
+                        <p:inputText value="#{addDoctorBean.age}" id="age" />
+                        <p:message for="age" />
 
-                        <h:outputLabel value="#{msg.price} " />
-                        <h:inputText value="#{addDoctorBean.price}" id="price" >
+                        <p:outputLabel value="#{msg.price} " />
+                        <p:inputText value="#{addDoctorBean.price}" id="price" >
                             <f:convertNumber minFractionDigits="0" 
                                              maxFractionDigits="2"/>
-                        </h:inputText>
-                        <h:message for="price" />
+                        </p:inputText>
+                        <p:message for="price" />
 
-                        <h:outputLabel value="#{msg.date} " />
-                        <h:inputText value="#{addDoctorBean.date}" id="date" >
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
-                        </h:inputText>
-                        <h:message for="date" />
+                        <p:outputLabel value="#{msg.date} " />
+                        <p:calendar value="#{addDoctorBean.date}" id="date" 
+                                    pattern="yyyy-MM-dd" />
+                        
+                        <p:message for="date" />
                     </h:panelGrid>
 
-                    <h:commandButton value="#{msg.add}" 
+                    <p:commandButton value="#{msg.add}" 
+                                     ajax="false"
                                      action="#{addDoctorBean.add()}" />
                 </h:form>
 

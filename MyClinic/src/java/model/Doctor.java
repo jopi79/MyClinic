@@ -28,13 +28,6 @@ public class Doctor extends Person{
         this.specialization = specialization;
     }
 
-    public Doctor(Specialization specialization, String name, String lastname, int id ) {
-        super(id, name, lastname);
-        this.specialization = specialization;
-    }
-
-    
-    
     public Specialization getSpecialization() {
         return specialization;
     }

@@ -107,7 +107,7 @@ public class AddDoctorBean {
         d.setDate(date);
         d.setPrice(price);
         doctorBean.add(d);
-        return null;
+        return "doctors";
     }
     
     public AddDoctorBean() {

@@ -5,12 +5,13 @@
  */
 package beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import model.Doctor;
 import model.Specialization;
 
@@ -19,8 +20,8 @@ import model.Specialization;
  * @author Student
  */
 @Named(value = "doctorBean")
-@RequestScoped
-public class DoctorBean {
+@SessionScoped
+public class DoctorBean implements Serializable{
 
     private List<Doctor> doctors;
 
@@ -60,11 +61,11 @@ public class DoctorBean {
     @PostConstruct
     public void init(){
          doctors = new ArrayList<Doctor>();
-         doctors.add(new Doctor(Specialization.laryngologist,"Jan","Adamski",1));
-         doctors.add(new Doctor(Specialization.ophthalmologist,"Bogdan","Bączek",2));
-         doctors.add(new Doctor(Specialization.pediatrician,"Cezary","Czarkowski",3));
-         doctors.add(new Doctor(Specialization.laryngologist,"Damian","Dunik",4));
-         doctors.add(new Doctor(Specialization.pediatrician,"Ernest","Edamski",5));
+         doctors.add(new Doctor(Specialization.laryngologist,"Jan","Adamski"));
+         doctors.add(new Doctor(Specialization.ophthalmologist,"Bogdan","Bączek"));
+         doctors.add(new Doctor(Specialization.pediatrician,"Cezary","Czarkowski"));
+         doctors.add(new Doctor(Specialization.laryngologist,"Damian","Dunik"));
+         doctors.add(new Doctor(Specialization.pediatrician,"Ernest","Edamski"));
     }
 
     public void add(Doctor d) {
