@@ -74,16 +74,16 @@ public class DoctorBean implements Serializable{
          d.setReceptionHours(DayOfWeek.FRIDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
          doctors.add(d);
          Doctor d2 = new Doctor(Specialization.ophthalmologist,"Bogdan","Bączek");
-         d.setReceptionHours(DayOfWeek.MONDAY,LocalTime.of(12, 0),LocalTime.of(15,0));
+         d2.setReceptionHours(DayOfWeek.MONDAY,LocalTime.of(12, 0),LocalTime.of(15,0));
          doctors.add(d2);
          Doctor d3 = new Doctor(Specialization.pediatrician,"Cezary","Czarkowski");
-         d.setReceptionHours(DayOfWeek.TUESDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
+         d3.setReceptionHours(DayOfWeek.TUESDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
          doctors.add(d3);
          Doctor d4 = new Doctor(Specialization.laryngologist,"Damian","Dunik");
-         d.setReceptionHours(DayOfWeek.WEDNESDAY,LocalTime.of(15, 0),LocalTime.of(18,0));
+         d4.setReceptionHours(DayOfWeek.WEDNESDAY,LocalTime.of(15, 0),LocalTime.of(18,0));
          doctors.add(d4);
          Doctor d5 = new Doctor(Specialization.pediatrician,"Ernest","Edamski");
-         d.setReceptionHours(DayOfWeek.THURSDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
+         d5.setReceptionHours(DayOfWeek.THURSDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
          doctors.add(d5);
     }
 
