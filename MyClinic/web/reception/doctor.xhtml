@@ -20,6 +20,11 @@
                 
                 #{msg.specialization}: #{doctorBean.doctor.specialization.toString()}
                 
+                <br/>
+                <h:link value="Grafik" outcome="/reception/reception_hours.xhtml" >
+                    <f:param name="item" value="#{doctorBean.id}" />
+                </h:link>
+                
             </ui:define>
 
         </ui:composition>
