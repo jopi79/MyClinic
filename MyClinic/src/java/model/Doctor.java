@@ -6,12 +6,7 @@
 package model;
 
 import java.math.BigDecimal;
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import utils.DateUtil;
 
 /**
  *
@@ -23,21 +18,13 @@ public class Doctor extends Person{
     private int age;
     private BigDecimal price;
     private Date date;
-    private List<Entry> receptionHours;
     
     public Doctor(String name, String lastname) {
         super(name, lastname);
-        receptionHours = new ArrayList();
-        LocalTime time = LocalTime.of(0, 0);
-//        Date date = DateUtil.localTimeToDate(time);
-        for(DayOfWeek day : DayOfWeek.values())
-        {            
-            receptionHours.add(new Entry(day,time,time));
-        }
     }
 
     public Doctor(Specialization specialization, String name, String lastname) {
-        this(name, lastname);
+        super(name, lastname);
         this.specialization = specialization;
     }
 
@@ -71,23 +58,6 @@ public class Doctor extends Person{
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public void setReceptionHours(DayOfWeek dayOfWeek, LocalTime from, LocalTime to) {
-        for(Entry entry : receptionHours)
-        {
-            if(dayOfWeek==entry.getDayOfWeek())
-            {
-//                entry.setFrom(DateUtil.localTimeToDate(from));
-//                entry.setTo(DateUtil.localTimeToDate(to));
-                entry.setFrom(from);
-                entry.setTo(to);
-            }
-        }
-    }
-
-    public List<Entry> getReceptionHours() {
-        return receptionHours;
     }
     
 }

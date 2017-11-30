@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <f:metadata >
-        <f:viewParam name="item" value="#{doctorBean.id}"/>
+        <f:viewParam name="item" value="#{patientBean.id}"/>
     </f:metadata>
 
     <h:head>
@@ -16,9 +16,13 @@
 
             <ui:define name="content">
                 
-                <h3>#{doctorBean.doctor.name} #{doctorBean.doctor.lastname}</h3>
+                <h3>#{patientBean.patient.name} #{patientBean.patient.lastname}</h3>
                 
-                #{msg.specialization}: #{doctorBean.doctor.specialization.toString()}
+                
+                #{msg.name}: #{patientBean.patient.name.toString()}
+                #{msg.lastname}: #{patientBean.patient.lastname.toString()}
+                #{msg.date}: #{patientBean.patient.date.toString()}
+               
                 
             </ui:define>
 
