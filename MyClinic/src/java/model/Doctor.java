@@ -29,10 +29,10 @@ public class Doctor extends Person{
         super(name, lastname);
         receptionHours = new ArrayList();
         LocalTime time = LocalTime.of(0, 0);
-        Date date = DateUtil.localTimeToDate(time);
+//        Date date = DateUtil.localTimeToDate(time);
         for(DayOfWeek day : DayOfWeek.values())
         {            
-            receptionHours.add(new Entry(day,date,date));
+            receptionHours.add(new Entry(day,time,time));
         }
     }
 
@@ -78,8 +78,10 @@ public class Doctor extends Person{
         {
             if(dayOfWeek==entry.getDayOfWeek())
             {
-                entry.setFrom(DateUtil.localTimeToDate(from));
-                entry.setTo(DateUtil.localTimeToDate(to));
+//                entry.setFrom(DateUtil.localTimeToDate(from));
+//                entry.setTo(DateUtil.localTimeToDate(to));
+                entry.setFrom(from);
+                entry.setTo(to);
             }
         }
     }

@@ -16,13 +16,14 @@ import utils.DateUtil;
  */
 public class Entry {
     private DayOfWeek dayOfWeek;
-    private Date from, to;
+    private LocalTime from, to;
 
-    public Entry(DayOfWeek dayOfWeek, Date from, Date to) {
+    public Entry(DayOfWeek dayOfWeek, LocalTime from, LocalTime to) {
         this.dayOfWeek = dayOfWeek;
         this.from = from;
         this.to = to;
     }
+
 
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
@@ -32,20 +33,39 @@ public class Entry {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public Date getFrom() {
+    public LocalTime getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(LocalTime from) {
         this.from = from;
     }
 
-    public Date getTo() {
+    public LocalTime getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(LocalTime to) {
         this.to = to;
     }
 
+    public Date getFromAsDate()
+    {
+        return DateUtil.localTimeToDate(from);
+    }
+    
+    public Date getToAsDate()
+    {
+        return DateUtil.localTimeToDate(to);
+    }
+   
+    public void setFromAsDate(Date date)
+    {
+        from = DateUtil.dateToLocalTime(date);
+    }
+
+    public void setToAsDate(Date date)
+    {
+        to = DateUtil.dateToLocalTime(date);
+    }
 }

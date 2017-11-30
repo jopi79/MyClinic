@@ -8,6 +8,7 @@ package utils;
 import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -30,7 +31,10 @@ public class DateUtil {
         return date;
     }
     
-    
+    public static LocalTime dateToLocalTime(Date date) {
+        LocalTime time = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()).toLocalTime();
+        return time;
+    }
     
     public static void main(String[]a)
     {

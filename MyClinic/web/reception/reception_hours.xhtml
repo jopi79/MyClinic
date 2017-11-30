@@ -21,11 +21,11 @@
                             #{entry.dayOfWeek}
                         </p:column>
                         <p:column headerText="Od">
-                            <p:calendar value="#{entry.from}" timeOnly="true" pattern="HH:mm" />
+                            <p:calendar value="#{entry.fromAsDate}" timeOnly="true" pattern="HH:mm" />
                             
                         </p:column>
                         <p:column headerText="Do">
-                            <p:calendar value="#{entry.to}" timeOnly="true" pattern="HH:mm"  />
+                            <p:calendar value="#{entry.toAsDate}" timeOnly="true" pattern="HH:mm"  />
                             
                         </p:column>
                     </p:dataTable>
