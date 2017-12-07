@@ -21,6 +21,9 @@
                     <p:panel header="#{doctor.name} #{doctor.lastname}">
                         #{msg.specialization}: #{doctor.specialization.toString()}
                         <br/>
+                        <h:link value="Wyświetl szczegóły" outcome="doctor">
+                            <f:param name="item" value="#{doctor.id}"/>
+                        </h:link>
                     </p:panel>
                 </p:dataGrid>
             </ui:define>
