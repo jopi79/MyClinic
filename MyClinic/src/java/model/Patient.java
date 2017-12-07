@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -13,6 +14,10 @@ import java.util.Date;
  */
 public class Patient extends Person{
     private Date birthdate;
+    private Specialization specialization;
+    private int age;
+    private BigDecimal price;
+    
 
     public Date getBirthdate() {
         return birthdate;
@@ -30,6 +35,38 @@ public class Patient extends Person{
         super(name,lastname);
         this.birthdate = birthdate;
     }
+     
+
+    public Patient(Specialization specialization, String name, String lastname) {
+        super(name, lastname);
+        this.specialization = specialization;
+    }
+
+    public Specialization getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+   
 
 
 
