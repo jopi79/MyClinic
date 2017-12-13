@@ -7,6 +7,7 @@ package model;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import utils.DateUtil;
 
@@ -67,5 +68,16 @@ public class Entry {
     public void setToAsDate(Date date)
     {
         to = DateUtil.dateToLocalTime(date);
+    }
+    
+    public String getFromAsHour()
+    {
+        String f = from.format(DateTimeFormatter.ISO_LOCAL_TIME);
+        return f;
+    }
+     public String getToAsHour()
+    {
+        String t = to.format(DateTimeFormatter.ISO_LOCAL_TIME);
+        return t;
     }
 }
