@@ -5,6 +5,7 @@
  */
 package beans;
 
+import dao.DoctorDB;
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -69,7 +70,8 @@ public class DoctorBean implements Serializable{
     
     @PostConstruct
     public void init(){
-         doctors = new ArrayList<Doctor>();
+        doctors = DoctorDB.getDoctors();
+/*         doctors = new ArrayList<Doctor>();
          Doctor d = new Doctor(Specialization.laryngologist,"Jan","Adamski");
          d.setReceptionHours(DayOfWeek.FRIDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
          doctors.add(d);
@@ -84,10 +86,19 @@ public class DoctorBean implements Serializable{
          doctors.add(d4);
          Doctor d5 = new Doctor(Specialization.pediatrician,"Ernest","Edamski");
          d5.setReceptionHours(DayOfWeek.THURSDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
-         doctors.add(d5);
+         doctors.add(d5);*/
     }
 
     public void add(Doctor d) {
         doctors.add(d);
+        DoctorDB.save(d);
+    }
+    
+    public void update()
+    {
+        for(Entry entry : doctor.getReceptionHours())
+        {
+            DoctorDB.update(entry);
+        }
     }
 }

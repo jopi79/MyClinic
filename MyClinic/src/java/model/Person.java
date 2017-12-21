@@ -23,7 +23,7 @@ import javax.persistence.SequenceGenerator;
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="PERSON_TYPE",discriminatorType=DiscriminatorType.STRING)
 public class Person {
-    private static int count = 0;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "OSOBA_SEQ")
     @SequenceGenerator(name = "OSOBA_SEQ", sequenceName = "OSOBA_SEQ_W_BAZIE")
@@ -55,7 +55,6 @@ public class Person {
     public Person(String name, String lastname) {
         this.name = name;
         this.lastname = lastname;
-        this.id = ++count;
     }
 
     public String getName() {
@@ -68,6 +67,18 @@ public class Person {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     

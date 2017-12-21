@@ -29,7 +29,8 @@
                             
                         </p:column>
                     </p:dataTable>
-                    <p:commandButton value="Zapisz" action="/reception/doctor.xhtml"/>
+                    <p:commandButton ajax="false"
+                        value="Zapisz" action="#{doctorBean.update()}"/>
                 </h:form>
             </ui:define>
 
