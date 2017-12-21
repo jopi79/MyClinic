@@ -9,20 +9,41 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import utils.DateUtil;
 
 /**
  *
  * @author Student
  */
+@Entity
 public class Entry {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReceptionHours_SEQ")
+    @SequenceGenerator(name = "ReceptionHours_SEQ", sequenceName = "ReceptionHours_SEQ")
+    private int id;
     private DayOfWeek dayOfWeek;
-    private LocalTime from, to;
+    @Column(name="reception_from")
+    private LocalTime from;
+    @Column(name="reception_to")
+    private LocalTime to;
 
+    @ManyToOne
+    private Doctor doctor;
+    
     public Entry(DayOfWeek dayOfWeek, LocalTime from, LocalTime to) {
         this.dayOfWeek = dayOfWeek;
         this.from = from;
         this.to = to;
+    }
+
+    public Entry() {
     }
 
 
@@ -80,4 +101,22 @@ public class Entry {
         String t = to.format(DateTimeFormatter.ISO_LOCAL_TIME);
         return t;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+     
+     
 }

@@ -7,14 +7,16 @@ package model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Damian
  */
+@Entity
 public class Patient extends Person{
     private Date birthdate;
-    private Specialization specialization;
+    
     private int age;
     private BigDecimal price;
     
@@ -27,6 +29,11 @@ public class Patient extends Person{
         this.birthdate = birthdate;
     }
 
+    public Patient()
+    {
+        
+    }
+    
     public Patient(String name, String lastname) {
         super(name,lastname);
     }
@@ -36,20 +43,6 @@ public class Patient extends Person{
         this.birthdate = birthdate;
     }
      
-
-    public Patient(Specialization specialization, String name, String lastname) {
-        super(name, lastname);
-        this.specialization = specialization;
-    }
-
-    public Specialization getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(Specialization specialization) {
-        this.specialization = specialization;
-    }
-
     public int getAge() {
         return age;
     }

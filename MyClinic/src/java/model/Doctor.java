@@ -11,19 +11,34 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import utils.DateUtil;
 
 /**
  *
  * @author Student
  */
+@Entity
 public class Doctor extends Person{
     
+    @Enumerated(EnumType.STRING)
     private Specialization specialization;
     private int age;
     private BigDecimal price;
     private Date date;
+    
+    @OneToMany(mappedBy="doctor", fetch=FetchType.EAGER,cascade = {CascadeType.ALL})
     private List<Entry> receptionHours;
+
+    public Doctor() {
+    }
+    
+    
     
     public Doctor(String name, String lastname) {
         super(name, lastname);
