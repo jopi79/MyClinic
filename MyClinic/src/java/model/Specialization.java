@@ -20,6 +20,7 @@ public enum Specialization {
             = ResourceBundle.getBundle("messages.specializations");
 
     public String toString() {
+        
         switch (this) {
             case pediatrician:
                 return rb.getString("pediatrician");
