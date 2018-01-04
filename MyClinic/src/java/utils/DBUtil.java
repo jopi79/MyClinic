@@ -9,6 +9,7 @@ import model.Doctor;
 import model.Entry;
 import model.Patient;
 import model.Person;
+import model.Visit;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
@@ -20,12 +21,12 @@ public class DBUtil {
 
     private static void createDB() {
         AnnotationConfiguration config = new AnnotationConfiguration();
-        config.addAnnotatedClass(Person.class);
-        config.addAnnotatedClass(Doctor.class);
-        config.addAnnotatedClass(Patient.class);
-        config.addAnnotatedClass(Entry.class);
+//        config.addAnnotatedClass(Person.class);
+//        config.addAnnotatedClass(Doctor.class);
+//        config.addAnnotatedClass(Patient.class);
+//        config.addAnnotatedClass(Entry.class);
 //        config.addAnnotatedClass(Specialization.class);
-//        config.addAnnotatedClass(Visit.class);
+        config.addAnnotatedClass(Visit.class);
         config.configure("hibernate.cfg.xml");
         new SchemaExport(config).create(true, true);
     }

@@ -1,5 +1,6 @@
 package beans;
 
+import dao.PatientDB;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,15 +57,18 @@ public class PatientBean implements Serializable{
     
     @PostConstruct
     public void init(){
+        patients = PatientDB.getPatients();
+        /*
          patients = new ArrayList<Patient>();
          patients.add(new Patient("Adam", "Mickiewicz"));
          patients.add(new Patient("Abra","Kadabra"));
          patients.add(new Patient("Adam","Małysz"));
          patients.add(new Patient("John","Snow"));
-         patients.add(new Patient("Ip","Man"));
+         patients.add(new Patient("Ip","Man"));*/
     }
 
     public void add(Patient d) {
         patients.add(d);
+        PatientDB.save(d);
     }
 }
