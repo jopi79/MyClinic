@@ -5,34 +5,34 @@
  */
 package beans;
 
+
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import model.Doctor;
+import model.Patient;
 import model.Specialization;
 
 /**
  *
  * @author Student
  */
-@Named(value = "addDoctorBean")
+@Named(value = "addPatientBean")
 @RequestScoped
-public class AddDoctorBean {
+public class AddPatientBean {
     
     @Size(min=1,message="{name_not_empty}")
     private String name;
     @Size(min=1,message="{lastname_not_empty}")
     private String lastname;
     
-    private Specialization specialization;
 
     @Min(value=18,message="{age_not_negative}")
     private int age;
@@ -43,7 +43,11 @@ public class AddDoctorBean {
     
     @NotNull(message="{date_not_empty}") 
     @Past(message="{date_past}")
-    private Date date;
+    private Date birthdate;
+    
+
+    
+    
 
     public int getAge() {
         return age;
@@ -53,21 +57,15 @@ public class AddDoctorBean {
         this.age = age;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    
     
     
     
@@ -87,30 +85,21 @@ public class AddDoctorBean {
         this.lastname = lastname;
     }
 
-    public Specialization getSpecialization() {
-        return specialization;
-    }
     
-    public Specialization[] getSpecializations() {
-        return Specialization.values();
-    }
     
-    public void setSpecialization(Specialization specialization) {
-        this.specialization = specialization;
-    }
+  
     @Inject
-    private DoctorBean doctorBean;
+    private PatientBean patientBean;
     public String add()
     {
-        Doctor d = new Doctor(specialization,name,lastname);
+        Patient d = new Patient(name,lastname);
         d.setAge(age);
-        d.setDate(date);
-        d.setPrice(price);
-        doctorBean.add(d);
-        return "doctors";
+        d.setBirthdate(birthdate);
+        patientBean.add(d);
+        return "patients";
     }
     
-    public AddDoctorBean() {
+    public AddPatientBean() {
     }
     
 }

@@ -13,45 +13,30 @@
 
             <ui:define name="content">
 
-                <h3>Nowy lekarz</h3>
+                <h3>Nowy Pacjent</h3>
                 <h:form>
                     <h:panelGrid columns="3">
                         <p:outputLabel value="#{msg.name} " />
-                        <p:inputText value="#{addDoctorBean.name}" id="name" />
+                        <p:inputText value="#{addPatientBean.name}" id="name" />
                         <p:message for="name" />
 
                         <p:outputLabel value="#{msg.lastname} " />
-                        <p:inputText value="#{addDoctorBean.lastname}" id="lastname"/>
+                        <p:inputText value="#{addPatientBean.lastname}" id="lastname"/>
                         <p:message for="lastname" />
-
-                        <p:outputLabel value="#{msg.specialization} " />
-                        <p:selectOneMenu value="#{addDoctorBean.specialization}"
-                                         id="specialization" >
-                            <f:selectItems value="#{addDoctorBean.specializations}" />
-                        </p:selectOneMenu>
-                        <p:message for="specialization" />
-
                         <p:outputLabel value="#{msg.age} " />
-                        <p:inputText value="#{addDoctorBean.age}" id="age" />
+                        <p:inputText value="#{addPatientBean.age}" id="age" />
                         <p:message for="age" />
-
-                        <p:outputLabel value="#{msg.price} " />
-                        <p:inputText value="#{addDoctorBean.price}" id="price" >
-                            <f:convertNumber minFractionDigits="0" 
-                                             maxFractionDigits="2"/>
-                        </p:inputText>
-                        <p:message for="price" />
-
                         <p:outputLabel value="#{msg.date} " />
-                        <p:calendar value="#{addDoctorBean.date}" id="date" 
+                        <p:calendar value="#{addPatientBean.birthdate}" id="date" 
                                     pattern="yyyy-MM-dd" />
-                        
                         <p:message for="date" />
+                      
+
                     </h:panelGrid>
 
                     <p:commandButton value="#{msg.add}" 
                                      ajax="false"
-                                     action="#{addDoctorBean.add()}" />
+                                     action="#{addPatientBean.add()}" />
                 </h:form>
 
             </ui:define>

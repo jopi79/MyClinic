@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -11,13 +12,17 @@
             <ui:define name="content">
                 <h3>#{msg.login2}</h3>
                 <h:form rendered="#{not userBean.logged}">
-                    <h:panelGrid columns="2">
-                        <h:outputText value="#{msg.login}" />
-                        <h:inputText value="#{userBean.login}" />
-                        <h:outputText value="#{msg.password}" />
-                        <h:inputSecret value="#{userBean.password}" />
+                    <p:messages />
+                    <h:panelGrid columns="3">
+                        <p:outputLabel value="#{msg.login}" />
+                        <p:inputText value="#{userBean.login}" id="login"/>
+                        <p:message for="login"/>
+                        <p:outputLabel value="#{msg.password}" />
+                        <p:password value="#{userBean.password}" id="password" />
+                        <p:message for="password"/>
                     </h:panelGrid>
-                    <h:commandButton value="#{msg.ok}" action="#{userBean.logIn()}" />
+                    <p:commandButton value="#{msg.ok}" ajax="false"
+                                     action="#{userBean.logIn()}" />
                 </h:form>
             </ui:define>
 

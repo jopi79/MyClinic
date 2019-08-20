@@ -5,13 +5,18 @@
  */
 package beans;
 
+import dao.DoctorDB;
+import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import model.Doctor;
+import model.Entry;
 import model.Specialization;
 
 /**
@@ -19,8 +24,8 @@ import model.Specialization;
  * @author Student
  */
 @Named(value = "doctorBean")
-@RequestScoped
-public class DoctorBean {
+@SessionScoped
+public class DoctorBean implements Serializable{
 
     private List<Doctor> doctors;
 
@@ -54,20 +59,46 @@ public class DoctorBean {
         return doctor;
     }
     
+    public List<Entry> getReceptionHours()
+    {
+        if(doctor==null) return null;
+        return doctor.getReceptionHours();
+    }
+    
     public DoctorBean() {
     }
     
     @PostConstruct
     public void init(){
-         doctors = new ArrayList<Doctor>();
-         doctors.add(new Doctor(Specialization.laryngologist,"Jan","Adamski",1));
-         doctors.add(new Doctor(Specialization.ophthalmologist,"Bogdan","Bączek",2));
-         doctors.add(new Doctor(Specialization.pediatrician,"Cezary","Czarkowski",3));
-         doctors.add(new Doctor(Specialization.laryngologist,"Damian","Dunik",4));
-         doctors.add(new Doctor(Specialization.pediatrician,"Ernest","Edamski",5));
+        doctors = DoctorDB.getDoctors();
+/*         doctors = new ArrayList<Doctor>();
+         Doctor d = new Doctor(Specialization.laryngologist,"Jan","Adamski");
+         d.setReceptionHours(DayOfWeek.FRIDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
+         doctors.add(d);
+         Doctor d2 = new Doctor(Specialization.ophthalmologist,"Bogdan","Bączek");
+         d2.setReceptionHours(DayOfWeek.MONDAY,LocalTime.of(12, 0),LocalTime.of(15,0));
+         doctors.add(d2);
+         Doctor d3 = new Doctor(Specialization.pediatrician,"Cezary","Czarkowski");
+         d3.setReceptionHours(DayOfWeek.TUESDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
+         doctors.add(d3);
+         Doctor d4 = new Doctor(Specialization.laryngologist,"Damian","Dunik");
+         d4.setReceptionHours(DayOfWeek.WEDNESDAY,LocalTime.of(15, 0),LocalTime.of(18,0));
+         doctors.add(d4);
+         Doctor d5 = new Doctor(Specialization.pediatrician,"Ernest","Edamski");
+         d5.setReceptionHours(DayOfWeek.THURSDAY,LocalTime.of(8, 0),LocalTime.of(12,0));
+         doctors.add(d5);*/
     }
 
     public void add(Doctor d) {
         doctors.add(d);
+        DoctorDB.save(d);
+    }
+    
+    public void update()
+    {
+        for(Entry entry : doctor.getReceptionHours())
+        {
+            DoctorDB.update(entry);
+        }
     }
 }
